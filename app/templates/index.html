@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Story Generator</title>
+    <style>
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd; /* Light blue background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #1976D2; /* Darker blue for heading */
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1976D2; /* Darker blue for labels */
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #90caf9; /* Light blue border */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-control:focus {
+            border-color: #1976D2; /* Darker blue on focus */
+            outline: none;
+        }
+        .btn-custom {
+            width: 100%;
+            padding: 10px;
+            background-color: #2196F3; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+        .generated-story {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .generated-story h3 {
+            color: #1976D2; /* Darker blue for heading */
+            margin-bottom: 15px;
+        }
+        .generated-story p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1976D2; /* Darker blue footer */
+            color: white;
+            font-size: 14px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="container">
+        <div>
+            <h1>Story Generator</h1>
+            <!-- User Instructions -->
+            <p class="text-center" style="color: #1976D2;">
+                Enter a prompt to generate a custom story.
+            </p>
+            <!-- User Input Form -->
+            <form id="data-form" action="/" method="post">
+                <div class="form-group">
+                    <label for="prompt">Enter your story prompt:</label>
+                    <input type="text" id="prompt" name="prompt" class="form-control" value="{{ prompt }}" placeholder="e.g., Once upon a time..." required>
+                </div>
+                <div class="form-group">
+                    <label for="seq">Select a max word limit:</label>
+                    <select id="seq" name="seq" class="form-control" required>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-custom">Generate Story</button>
+                </div>
+            </form>
+            <!-- Generated Text -->
+            {% if sentence %}
+            <div class="generated-story">
+                <h3>Generated Story:</h3>
+                <p>{{ sentence }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div>
+            <p class="mb-0">@ William - st125326</p>
+        </div>
+    </footer>
+</body>
+</html>
