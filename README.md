@@ -87,35 +87,35 @@ Provide documentation on how the web application interfaces with the language mo
 3. User Workflow
 
 Step 1: User Input
-The user visits the web application and sees a form with two fields:
-Text Prompt: The user enters a starting sentence or phrase (e.g., "Once upon a time").
-Max Word Limit: The user selects the maximum number of words to generate (options: 20, 50, 100).
-The user clicks the "Generate Story" button to submit the form.
+- The user visits the web application and sees a form with two fields:
+- Text Prompt: The user enters a starting sentence or phrase (e.g., "Once upon a time").
+- Max Word Limit: The user selects the maximum number of words to generate (options: 20, 50, 100).
+- The user clicks the "Generate Story" button to submit the form.
 
 Step 2: Backend Processing
-The Flask application (app.py) receives the form data via a POST request.
-The application extracts the following from the form:
-prompt: The text prompt entered by the user.
-seq_len: The maximum word limit selected by the user.
-The application calls the generate function from class_function.py with the following parameters:
-prompt: The user's text prompt.
-max_seq_len: The maximum word limit.
-temperature: Controls the randomness of the generated text (default: 1.0).
-model: The pre-trained LSTM language model.
-tokenizer: Converts text into tokens for the model.
-vocab: Maps tokens to indices and vice versa.
-device: Specifies whether to use CPU or GPU (automatically detected).
-seed: Ensures reproducibility (default: 0).
+- The Flask application (app.py) receives the form data via a POST request.
+- The application extracts the following from the form:
+- prompt: The text prompt entered by the user.
+- seq_len: The maximum word limit selected by the user.
+- The application calls the generate function from class_function.py with the following parameters:
+- prompt: The user's text prompt.
+- max_seq_len: The maximum word limit.
+- temperature: Controls the randomness of the generated text (default: 1.0).
+- model: The pre-trained LSTM language model.
+- tokenizer: Converts text into tokens for the model.
+- vocab: Maps tokens to indices and vice versa.
+- device: Specifies whether to use CPU or GPU (automatically detected).
+- seed: Ensures reproducibility (default: 0).
 
 Step 3: Text Generation
-The generate function processes the input prompt:
-Tokenizes the prompt using the tokenizer.
-Converts tokens into indices using the vocab.
-The LSTM model generates text autoregressively:
-The model predicts the next word based on the input sequence.
-The process repeats until the maximum word limit is reached or an end-of-sequence token (<eos>) is generated.
-The generated tokens are converted back into text using the vocab.
+- The generate function processes the input prompt:
+- Tokenizes the prompt using the tokenizer.
+- Converts tokens into indices using the vocab.
+- The LSTM model generates text autoregressively:
+- The model predicts the next word based on the input sequence.
+- The process repeats until the maximum word limit is reached or an end-of-sequence token (<eos>) is generated.
+- The generated tokens are converted back into text using the vocab.
 
 Step 4: Display Results
-The generated text is returned to the Flask application.
-The application renders the index.html template with the generated text and displays it to the user.
+- The generated text is returned to the Flask application.
+- The application renders the index.html template with the generated text and displays it to the user.
